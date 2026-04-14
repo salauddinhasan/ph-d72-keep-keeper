@@ -11,7 +11,20 @@ import Image from "next/image";
 import { LuArchive } from "react-icons/lu";
 import { AiOutlineDelete } from "react-icons/ai";
 
-const Page = () => {
+const DetailsPage = () => {
+  const handleAddInteraction = (type) => {
+    const newItem = {
+      type,
+      message: "Quick check-in",
+      date: new Date().toLocaleDateString(),
+    };
+
+    const existing = JSON.parse(localStorage.getItem("timeline")) || [];
+
+    localStorage.setItem("timeline", JSON.stringify([newItem, ...existing]));
+  };
+  
+
   const { id } = useParams();
   const router = useRouter();
 
@@ -125,7 +138,10 @@ const Page = () => {
             Quick Check-In
           </h3>
           <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4">
-            <div className="border border-base-300 flex-1 h-24 shadow-sm rounded-xl flex flex-col items-center justify-center gap-1 hover:shadow-xl hover:border-primary transition cursor-pointer py-2 group">
+            <div
+              onClick={() => handleAddInteraction("call")}
+              className="border border-base-300 flex-1 h-24 shadow-sm rounded-xl flex flex-col items-center justify-center gap-1 hover:shadow-xl hover:border-primary transition cursor-pointer py-2 group"
+            >
               <MdAddIcCall
                 size={24}
                 className=" group-hover:scale-110 transition"
@@ -133,7 +149,10 @@ const Page = () => {
               <h2 className="text-sm text-gray-500 font-bold  ">Call</h2>
             </div>
 
-            <div className="border border-base-300 flex-1 h-24 shadow-sm rounded-xl flex flex-col items-center justify-center gap-1 hover:shadow-xl hover:border-primary transition cursor-pointer py-2 group">
+            <div
+              onClick={() => handleAddInteraction("text")}
+              className="border border-base-300 flex-1 h-24 shadow-sm rounded-xl flex flex-col items-center justify-center gap-1 hover:shadow-xl hover:border-primary transition cursor-pointer py-2 group"
+            >
               <IoMdText
                 size={24}
                 className="  group-hover:scale-110 transition"
@@ -141,7 +160,10 @@ const Page = () => {
               <h2 className="text-sm text-gray-500 font-bold  ">Text</h2>
             </div>
 
-            <div className="border border-base-300 flex-1 h-24 shadow-sm rounded-xl flex flex-col items-center justify-center gap-1 hover:shadow-xl hover:border-primary transition cursor-pointer py-2 group">
+            <div
+              onClick={() => handleAddInteraction("video")}
+              className="border border-base-300 flex-1 h-24 shadow-sm rounded-xl flex flex-col items-center justify-center gap-1 hover:shadow-xl hover:border-primary transition cursor-pointer py-2 group"
+            >
               <IoMdVideocam
                 size={24}
                 className="  group-hover:scale-110 transition"
@@ -271,4 +293,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default DetailsPage;
