@@ -1,4 +1,4 @@
-"use client"; // usePathname ব্যবহার করার জন্য এটি অবশ্যই লাগবে
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,11 +8,10 @@ import { TfiStatsUp } from "react-icons/tfi";
 const Navbar = () => {
   const pathname = usePathname();
 
-  // একটি ছোট ফাংশন যাতে কোড ক্লিন থাকে
   const getLinkStyle = (path) => {
     return pathname === path
-      ? "flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white shadow-md transition-all" // Active Style
-      : "flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-base-200 transition-all text-gray-600"; // Normal Style
+      ? "flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white shadow-md transition-all"  
+      : "flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-base-200 transition-all text-gray-600"; 
   };
 
   return (
