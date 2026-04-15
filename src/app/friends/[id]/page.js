@@ -24,7 +24,7 @@ const DetailsPage = () => {
     const existing = JSON.parse(localStorage.getItem("timeline")) || [];
 
     localStorage.setItem("timeline", JSON.stringify([newItem, ...existing]));
-    toast.success(`${type} added to timeline 🎉`);
+    toast.success(`${type} added to timeline `);
   };
 
   const { id } = useParams();
