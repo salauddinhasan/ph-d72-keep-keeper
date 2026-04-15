@@ -8,7 +8,7 @@ import { RiDeleteBack2Fill } from "react-icons/ri";
 const Timeline = () => {
   const [data, setData] = useState([]);
   const [mounted, setMounted] = useState(false);
-  const [filter, setFilter] = useState("All"); // ফিল্টার স্টেট যোগ করা হয়েছে
+  const [filter, setFilter] = useState("All");  
 
   useEffect(() => {
     const loadData = () => {
@@ -71,7 +71,7 @@ const Timeline = () => {
         ) : (
           filteredData.map((item) => (
             <div
-              key={item.id} // এখানে ind এর বদলে item.id ব্যবহার করা হয়েছে (Safe Approach)
+              key={item.id}  
               className="flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition mb-3"
             >
               <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 border border-gray-200 shrink-0 shadow-inner">
