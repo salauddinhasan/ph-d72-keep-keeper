@@ -14,6 +14,7 @@ const FriendCard = ({ friend }) => {
           <Image
             src={friend.picture}
             alt={friend.name}
+            loading="eager"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="rounded-full object-cover ring-2 ring-primary ring-offset-2 group-hover:scale-105 transition duration-300"
