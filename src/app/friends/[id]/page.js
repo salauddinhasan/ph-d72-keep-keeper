@@ -10,20 +10,22 @@ import { IoMdText, IoMdVideocam } from "react-icons/io";
 import Image from "next/image";
 import { LuArchive } from "react-icons/lu";
 import { AiOutlineDelete } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const DetailsPage = () => {
   const handleAddInteraction = (type) => {
     const newItem = {
+      id: crypto.randomUUID(),
       type,
-      message: "Quick check-in",
+      name: friend.name,
       date: new Date().toLocaleDateString(),
     };
 
     const existing = JSON.parse(localStorage.getItem("timeline")) || [];
 
     localStorage.setItem("timeline", JSON.stringify([newItem, ...existing]));
+    toast.success(`${type} added to timeline 🎉`);
   };
-  
 
   const { id } = useParams();
   const router = useRouter();
@@ -139,7 +141,7 @@ const DetailsPage = () => {
           </h3>
           <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4">
             <div
-              onClick={() => handleAddInteraction("call")}
+              onClick={() => handleAddInteraction("Call")}
               className="border border-base-300 flex-1 h-24 shadow-sm rounded-xl flex flex-col items-center justify-center gap-1 hover:shadow-xl hover:border-primary transition cursor-pointer py-2 group"
             >
               <MdAddIcCall
@@ -150,7 +152,7 @@ const DetailsPage = () => {
             </div>
 
             <div
-              onClick={() => handleAddInteraction("text")}
+              onClick={() => handleAddInteraction("Text")}
               className="border border-base-300 flex-1 h-24 shadow-sm rounded-xl flex flex-col items-center justify-center gap-1 hover:shadow-xl hover:border-primary transition cursor-pointer py-2 group"
             >
               <IoMdText
@@ -161,7 +163,7 @@ const DetailsPage = () => {
             </div>
 
             <div
-              onClick={() => handleAddInteraction("video")}
+              onClick={() => handleAddInteraction("Video")}
               className="border border-base-300 flex-1 h-24 shadow-sm rounded-xl flex flex-col items-center justify-center gap-1 hover:shadow-xl hover:border-primary transition cursor-pointer py-2 group"
             >
               <IoMdVideocam

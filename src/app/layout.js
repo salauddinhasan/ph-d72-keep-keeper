@@ -1,22 +1,20 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { ToastContainer } from "react-toastify";
+ 
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`  h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <Navbar />
 
-        <Navbar/>
-        
-        <main>
-          {children}
-          
+        <main className="flex-1">{children}</main>
 
-        </main>
-
-        <Footer/>
-        </body>
+        <ToastContainer />
+        <Footer />
+      </body>
     </html>
   );
 }
